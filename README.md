@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://telegra.ph/file/a33a0742bd82075087684.jpg" alt="Yoshino Bot" width="100"/>
+<img src="https://d.top4top.io/p_2736lxm6m0.jpg" alt="Yoshino Bot" width="100"/>
 
 
 </p>
@@ -75,7 +75,7 @@ npm start
 ----------
 
 <p align="center">
-  <a href="https://youtu.be/8s2lHsgYaCc"><img src="https://telegra.ph/file/a33a0742bd82075087684.jpg" />
+  <a href="https://youtu.be/8s2lHsgYaCc"><img src="https://e.top4top.io/p_2736otrab1.png" />
 </p>
 
 ## Donate
@@ -86,7 +86,7 @@ npm start
 - [Group](https://chat.whatsapp.com/KShSydBXuPBIx0eeWgl7gY)
 
 # Thanks to
-<a href="https://github.com/adiwajshing"><img src="https://github.com/adiwajshing.png?size=100" width="100" height="100"></a> | [![Irfan](https://github.com/rtwone.png?size=100)](https://github.com/rtwone) | [![Yoga](https://github.com/YogGanz.png?size=100)](https://github.com/YogGanz) | [![Caliph](http://github.com/caliphdev.png?size=100)](http://github.com/caliphdev) | [![Handoko](http://github.com/handoko98.png?size=100)](http://github.com/handoko98) | [![Arthur](http://github.com/arthur-md.png?size=100)](http://github.com/arthur-md) | [![Riy](http://github.com/riycoders.png?size=100)](http://github.com/riycoders)
+<a href="https://github.com/adiwajshing"><img src="https://github.com/adiwajshing.png?size=100" width="100" height="100"></a> | [![Irfan](https://github.com/rtwone.png?size=100)](https://github.com/rtwone) | [![Yoga](https://github.com/YogGanz.png?size=100)](https://github.com/YogGanz) | [![Caliph](http://github.com/caliphdev.png?size=100)](http://github.com/caliphdev) | [![Handoko](http://github.com/handoko19.png?size=100)](http://github.com/handoko19) | [![Arthur](http://github.com/arthur-md.png?size=100)](http://github.com/arthur-md) | [![Riy](http://github.com/riycoders.png?size=100)](http://github.com/riycoders)
 ----|----|----|----|----|----|----
-[Adiwajshing](https://github.com/adiwajshing) | [Irfan](https://github.com/rtwone) | [Yoga](https://github.com/YogGanz) | [Caliph](https://github.com/caliphdev) | [Handoko](https://github.com/handoko98) | [Arthur](https://github.com/arthur-md) | [Riy](https://github.com/riycoders)
+[Adiwajshing](https://github.com/adiwajshing) | [Irfan](https://github.com/rtwone) | [Yoga](https://github.com/YogGanz) | [Caliph](https://github.com/caliphdev) | [Handoko](https://github.com/handoko19) | [Arthur](https://github.com/arthur-md) | [Riy](https://github.com/riycoders)
 Owner of Baileys | Owner of Chitanda | My Inspiration | Owner of Caliph api | For Help | Pesatir | Owner of Yoshino
