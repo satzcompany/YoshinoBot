@@ -257,7 +257,7 @@ module.exports = async(conn, msg, m, setting, store, welcome) => {
            var htgm = randomNomor(100, 150)
            addBalance(sender, htgm, balance)
            reply(`*Selamat Jawaban Kamu Benar 🎉*\n\nJawaban : ${getJawabanGame(from, siapakahaku)}\nHadiah : ${htgm} balance\n\nIngin bermain lagi? ketik *${prefix}whoim*`)
-           math.splice(getGamePosi(from, siapakahaku), 1)
+           siapakahaku.splice(getGamePosi(from, siapakahaku), 1)
            }
         }
 
