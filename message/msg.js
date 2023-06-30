@@ -6,7 +6,8 @@
 
 "use strict";
 const {
-	downloadContentFromMessage
+	downloadContentFromMessage,
+	generateWAMessageFromContent
 } = require("@whiskeysockets/baileys")
 const { color, bgcolor } = require('../lib/color')
 const { getBuffer, fetchJson, fetchText, getRandom, getGroupAdmins, runtime, sleep, makeid } = require("../lib/myfunc");
@@ -322,15 +323,16 @@ module.exports = async(conn, msg, m, setting, store, welcome) => {
 			case prefix+'donasi':
 			    reply(`──「 MENU DONATE 」──\n\nHi ${pushname} 👋🏻\n\`\`\`DANA : ${setting.donasi.dana}\`\`\`\n\`\`\`GOPAY : ${setting.donasi.gopay}\`\`\`\nTerimakasih untuk kamu yang sudah donasi untuk perkembangan bot ini _^\n──「 THX FOR YOU ! 」──`)
 			    break
-			case prefix+'owner':
-                var number = ownerNumber.replace(/[^0-9]/g, '')
-                var vcard = 'BEGIN:VCARD\n'
-                + 'VERSION:3.0\n'
-                + 'FN:Owner of '+ botName + '\n'
-                + 'ORG:;\n'
-                + 'TEL;type=CELL;type=VOICE;waid=' + number + ':+' + number + '\n'
-                + 'END:VCARD'
-                conn.sendMessage(from, { contacts: { displayName: 'Owner of '+botName.split(' ')[0], contacts: [{ vcard }] }},{ quoted: msg })
+			case prefix+'owner':{
+				x let arrey = []
+                    for ( let x of ownerNumber){
+                        let getnem = conn.getName(x)
+                        let conara = { displayName: getnem, vcard: 'BEGIN:VCARD\n' + 'VERSION:3.0\n' + 'FN:' + getnem + '\n' + 'ORG:Kontak\n' + 'TEL;type=CELL;type=VOICE;waid=' + x.split("@")[0] + ':+' + x.split("@")[0] + '\n' + 'END:VCARD'.trim()}
+                        arrey.push(conara)
+				}
+                        let aa = generateWAMessageFromContent(from, { contactsArrayMessage: { contacts : arrey } }, {quoted: msg})
+				 conn.relayMessage(from, aa.message, {})
+			}
                 break
 			case prefix+'cekprem':
             case prefix+'cekpremium':
