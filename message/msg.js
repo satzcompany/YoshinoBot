@@ -54,8 +54,8 @@ module.exports = async(conn, msg, m, setting, store, welcome) => {
 	try {
 		let { ownerNumber, botName, gamewaktu, limitCount } = setting
 		let { allmenu } = require('./help')
-		const { type, quotedMsg, mentioned, now, fromMe } = msg
-		if (msg.isBaileys) return
+		const { type, quotedMsg, mentioned, isBaileys, now, fromMe } = msg
+		if (isBaileys) return
 		const jam = moment.tz('asia/jakarta').format('HH:mm:ss')
 		let dt = moment(Date.now()).tz('Asia/Jakarta').locale('id').format('a')
 		const ucapanWaktu = "Selamat "+dt.charAt(0).toUpperCase() + dt.slice(1)
@@ -77,7 +77,7 @@ module.exports = async(conn, msg, m, setting, store, welcome) => {
 		const isCmd = command.startsWith(prefix)
 		const isGroup = msg.key.remoteJid.endsWith('@g.us')
 		const sender = isGroup ? (msg.key.participant ? msg.key.participant : msg.participant) : msg.key.remoteJid
-		const isOwner = ownerNumber == sender ? true : ["6281575886399@s.whatsapp.net"].includes(sender) ? true : false
+		const isOwner = ownerNumber.includes(sender)
 		const pushname = msg.pushName
 		const q = chats.slice(command.length + 1, chats.length)
 		const body = chats.startsWith(prefix) ? chats : ''
@@ -207,13 +207,13 @@ module.exports = async(conn, msg, m, setting, store, welcome) => {
 		const isQuotedSticker = isQuotedMsg ? content.includes('stickerMessage') ? true : false : false
 
 		// Auto Read & Presence Online
-		conn.readMessages([msg.key])
-		conn.sendPresenceUpdate('available', from)
-		
-		if (conn.mode === 'self') {
-          if (!isOwner && !fromMe) return
-          if (fromMe && isBaileys) return
-        }
+		if (conn.mode === 'self'){
+            if (!fromMe && !isOwner) return
+            if (fromMe && isBaileys) return
+            conn.sendPresenceUpdate('unavailable', from)
+        } else {
+		     conn.readMessages([msg.key])
+		}
 		
 		// Auto Registrasi
 		if (isCmd && !isUser) {
