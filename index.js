@@ -9,12 +9,14 @@ const {
 	default: makeWASocket,
 	BufferJSON,
 	initInMemoryKeyStore,
+	jidDecode,
 	DisconnectReason,
 	AnyMessageContent,
     makeInMemoryStore,
 	useMultiFileAuthState,
 	delay
 } = require("@whiskeysockets/baileys")
+const PhoneNumber = require('awesome-phonenumber');
 const figlet = require("figlet");
 const fs = require("fs");
 const moment = require('moment')
@@ -144,6 +146,32 @@ const connectToWhatsApp = async () => {
         })
 
 	conn.reply = (from, content, msg) => conn.sendMessage(from, { text: content }, { quoted: msg })
+
+	conn.decodeJid = (jid) => {
+		if (!jid) return jid;
+		if (/:\d+@/gi.test(jid)) {
+			let decode = jidDecode(jid) || {};
+			return decode.user && decode.server && decode.user + '@' + decode.server || jid
+		} else return jid;
+	};
+
+        conn.getName = (jid, withoutContact = false) => {
+		var id = conn.decodeJid(jid) || jid;
+		withoutContact = conn.withoutContact || withoutContact;
+		let v;
+		if (id.endsWith("@g.us")) return new Promise(async (resolve) => {
+			v = store.contacts[id] || {};
+			if (!(v.name || v.subject)) v = conn.groupMetadata(id) || {};
+			resolve(v.name || v.subject || PhoneNumber('+' + id.replace('@s.whatsapp.net', '')).getNumber('international'));
+		})
+		else v = id === '0@s.whatsapp.net' ? {
+			id,
+			name: 'WhatsApp',
+		} : id === conn.decodeJid(conn.user.id) ?
+		conn.user :
+		(store.contacts[id] || {})
+		return (withoutContact ? '' : v.name) || v.subject || v.verifiedName || PhoneNumber('+' + jid.replace('@s.whatsapp.net', '')).getNumber('international');
+    }
 
 	return conn
 }
