@@ -324,7 +324,7 @@ module.exports = async(conn, msg, m, setting, store, welcome) => {
 			    reply(`──「 MENU DONATE 」──\n\nHi ${pushname} 👋🏻\n\`\`\`DANA : ${setting.donasi.dana}\`\`\`\n\`\`\`GOPAY : ${setting.donasi.gopay}\`\`\`\nTerimakasih untuk kamu yang sudah donasi untuk perkembangan bot ini _^\n──「 THX FOR YOU ! 」──`)
 			    break
 			case prefix+'owner':{
-				x let arrey = []
+				let arrey = []
                     for ( let x of ownerNumber){
                         let getnem = conn.getName(x)
                         let conara = { displayName: getnem, vcard: 'BEGIN:VCARD\n' + 'VERSION:3.0\n' + 'FN:' + getnem + '\n' + 'ORG:Kontak\n' + 'TEL;type=CELL;type=VOICE;waid=' + x.split("@")[0] + ':+' + x.split("@")[0] + '\n' + 'END:VCARD'.trim()}
